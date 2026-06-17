@@ -21,12 +21,53 @@ const CAROUSEL_ITEMS = [
     title: 'Automated Robotics',
     videoUrl: 'https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
     gradient: 'linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%)'
+  },
+  {
+    id: 4,
+    title: 'Quantum Computing',
+    videoUrl: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
+    gradient: 'linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%)'
+  },
+  {
+    id: 5,
+    title: 'Autonomous Transit',
+    videoUrl: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
+    gradient: 'linear-gradient(135deg, #fddb92 0%, #d1fdff 100%)'
+  },
+  {
+    id: 6,
+    title: 'Cybernetic Prototyping',
+    videoUrl: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4',
+    gradient: 'linear-gradient(135deg, #96fbc4 0%, #f9f586 100%)'
+  },
+  {
+    id: 7,
+    title: 'Generative Synthesis',
+    videoUrl: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4',
+    gradient: 'linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)'
+  },
+  {
+    id: 8,
+    title: 'Virtual Environment',
+    videoUrl: 'https://storage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4',
+    gradient: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)'
   }
 ];
 
 export default function Carousel() {
   const [activeIndex, setActiveIndex] = useState(1);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+
+  // Dragging states
+  const dragStartX = useRef(0);
+  const isDragging = useRef(false);
+
+  // Touch states
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
+
+  // Wheel state (throttle)
+  const lastScrollTime = useRef(0);
 
   const handlePrev = () => {
     setActiveIndex((prev) => (prev - 1 + CAROUSEL_ITEMS.length) % CAROUSEL_ITEMS.length);
@@ -44,7 +85,6 @@ export default function Carousel() {
   };
 
   const handleMouseEnter = (index: number) => {
-    // Play video for ANY card hovered
     if (videoRefs.current[index]) {
       videoRefs.current[index]?.play().catch(() => {
         // Silently handle any browser auto-play restrictions
@@ -58,8 +98,79 @@ export default function Carousel() {
     }
   };
 
+  // Mouse drag handlers for desktop scroll
+  const handleMouseDown = (e: React.MouseEvent) => {
+    dragStartX.current = e.clientX;
+    isDragging.current = true;
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging.current) return;
+    const diff = dragStartX.current - e.clientX;
+    // Require 80px drag to slide the carousel
+    if (Math.abs(diff) > 80) {
+      if (diff > 0) {
+        handleNext();
+      } else {
+        handlePrev();
+      }
+      isDragging.current = false; // Trigger once per drag gesture
+    }
+  };
+
+  const handleMouseUp = () => {
+    isDragging.current = false;
+  };
+
+  // Touch swipe handlers for mobile scroll
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.targetTouches[0].clientX;
+    touchEndX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    const diff = touchStartX.current - touchEndX.current;
+    // Require 50px swipe to slide
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) {
+        handleNext();
+      } else {
+        handlePrev();
+      }
+    }
+  };
+
+  // Wheel handler for horizontal scrolling (trackpad swipe)
+  const handleWheel = (e: React.WheelEvent) => {
+    if (Math.abs(e.deltaX) > 10) {
+      const now = Date.now();
+      if (now - lastScrollTime.current > 600) {
+        if (e.deltaX > 0) {
+          handleNext();
+        } else {
+          handlePrev();
+        }
+        lastScrollTime.current = now;
+      }
+    }
+  };
+
   return (
-    <div className={styles.carouselContainer}>
+    <div 
+      className={styles.carouselContainer}
+      onMouseDown={handleMouseDown}
+      onMouseMove={handleMouseMove}
+      onMouseUp={handleMouseUp}
+      onMouseLeave={handleMouseUp}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+      onWheel={handleWheel}
+    >
       {/* Edge Masking overlays */}
       <div className={styles.edgeMaskLeft}></div>
       <div className={styles.edgeMaskRight}></div>
@@ -127,3 +238,4 @@ export default function Carousel() {
     </div>
   );
 }
+
