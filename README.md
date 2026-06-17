@@ -16,3 +16,37 @@ Matic AI Loti is a premium, state-of-the-art interactive landing page featuring 
 - **Styling**: Tailwind CSS, PostCSS, Vanilla CSS Modules
 - **Animation**: Framer Motion
 - **Icons**: Lucide React
+
+## 🚀 Getting Started
+
+To run the application locally, follow these steps:
+
+### Prerequisites
+
+Make sure you have Node.js (v18+) and npm installed on your system.
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/rajneeshverma1/Matic-ai-upgrade.git
+   ```
+
+2. Navigate into the project folder:
+   ```bash
+   cd natic-ai-loti
+   ```
+
+3. Install the dependencies:
+   ```bash
+   npm install
+   ```
+
+### Running the App
+
+Start the Turbopack-powered development server:
+```bash
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser to view the application.
