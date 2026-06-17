@@ -1,0 +1,210 @@
+.page {
+  width: 100%;
+  background-color: #fcfcfc;
+  color: #0b0c0e;
+  font-family: var(--font-sans), sans-serif;
+}
+
+/* Common Section Layout */
+.section {
+  padding: 100px 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.container {
+  max-width: 1100px;
+  width: 100%;
+}
+
+/* Problem-Solution Section */
+.problemSection {
+  background-color: #ffffff;
+  padding: 120px 40px;
+}
+
+.problemGrid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.problemTitle {
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+.problemText {
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  line-height: 1.6;
+  color: rgba(0, 0, 0, 0.7);
+  border-left: 3px solid #3b82f6;
+  padding-left: 24px;
+}
+
+/* Product Demo Section */
+.demoSection {
+  background-color: #fcfcfc;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.sectionTitle {
+  font-size: 2.25rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+
+.sectionSub {
+  font-size: 1.05rem;
+  color: rgba(0, 0, 0, 0.6);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.demoWrapper {
+  background: rgba(11, 12, 14, 0.02);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.04);
+}
+
+.demoVideoFrame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+}
+
+.demoVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* How It Works Section */
+.stepsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 24px;
+}
+
+.stepCard {
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+  transition: all 0.3s ease;
+}
+
+.stepCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
+  border-color: rgba(59, 130, 246, 0.2);
+}
+
+.stepNum {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #3b82f6;
+  background-color: rgba(59, 130, 246, 0.08);
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.stepTitle {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+}
+
+.stepDesc {
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+/* Testimonial adjustment */
+.testimonialsSection {
+  background-color: #ffffff;
+  padding: 100px 0;
+  width: 100%;
+}
+
+/* CTA Band */
+.ctaBand {
+  background: linear-gradient(135deg, #0b0c0e 0%, #14161a 100%);
+  color: #ffffff;
+  text-align: center;
+  padding: 120px 40px;
+  border-bottom: none;
+}
+
+.ctaTitle {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 16px;
+}
+
+.ctaSub {
+  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.65);
+  margin-bottom: 32px;
+}
+
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: #3b82f6;
+  color: #ffffff;
+  padding: 16px 36px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.35);
+}
+
+.ctaButton:hover {
+  background-color: #2563eb;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.45);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .problemGrid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .stepsGrid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .section {
+    padding: 80px 24px;
+  }
+}

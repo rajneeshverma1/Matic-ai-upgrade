@@ -1,8 +1,8 @@
 .footer {
-  background-color: #050505;
-  color: #ffffff;
-  padding: 80px 0 100px;
+  background-color: #0b0c0e;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.7);
+  padding: 80px 0 0 0;
   font-family: var(--font-sans), sans-serif;
   width: 100%;
 }
@@ -10,15 +10,15 @@
 .container {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 40px;
+  padding: 0 40px 60px 40px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: 40px;
 }
 
-/* Brand Area */
+/* Brand Section */
 .brandSection {
-  grid-column: span 4;
+  grid-column: span 5;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -28,43 +28,41 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  text-decoration: none;
+  color: #ffffff;
   margin-bottom: 20px;
 }
 
 .logoSymbol {
-  color: #ffffff;
   display: flex;
   align-items: center;
-  justify-content: center;
+  color: #ffffff;
 }
 
 .logoText {
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   font-weight: 700;
   letter-spacing: -0.02em;
-  color: #ffffff;
 }
 
-.slogan {
+.description {
   font-size: 0.88rem;
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.45);
-  max-width: 300px;
-  margin-bottom: 32px;
+  max-width: 320px;
+  margin-bottom: 24px;
 }
 
-/* Built with love section */
 .builtWithLove {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 8px 18px;
-  background-color: rgba(255, 255, 255, 0.02);
+  padding: 6px 14px;
+  background-color: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 99px;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: rgba(255, 255, 255, 0.5);
-  font-weight: 500;
 }
 
 .heart {
@@ -77,21 +75,12 @@
   font-weight: 600;
 }
 
-@keyframes heartbeat {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.15);
-  }
-}
-
 /* Links Columns */
 .linksGrid {
-  grid-column: span 8;
+  grid-column: span 7;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
 }
 
 .column {
@@ -99,7 +88,7 @@
   flex-direction: column;
 }
 
-.columnHeader {
+.columnTitle {
   font-size: 0.72rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -115,12 +104,13 @@
 }
 
 .linkList li {
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .link {
-  font-size: 0.84rem;
+  font-size: 0.85rem;
   color: rgba(255, 255, 255, 0.55);
+  text-decoration: none;
   transition: color 0.2s ease, transform 0.2s ease;
   display: inline-block;
 }
@@ -130,15 +120,34 @@
   transform: translateX(2px);
 }
 
-/* Social icons style under Company */
-.socialIcons {
+/* Bottom Bar */
+.bottomBar {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  background-color: #08090a;
+  padding: 24px 0;
+}
+
+.bottomContainer {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.copyright {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.socials {
   display: flex;
   gap: 16px;
   align-items: center;
-  margin-top: 24px;
 }
 
-.socialIcon {
+.socialLink {
   color: rgba(255, 255, 255, 0.4);
   transition: color 0.2s ease, transform 0.2s ease;
   display: flex;
@@ -146,16 +155,21 @@
   justify-content: center;
 }
 
-.socialIcon:hover {
+.socialLink:hover {
   color: #ffffff;
   transform: scale(1.1);
 }
 
-/* Responsive Styles */
-@media (max-width: 1024px) {
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
   .container {
     grid-template-columns: 1fr;
-    padding: 0 32px;
+    padding: 0 32px 48px 32px;
   }
   
   .brandSection {
@@ -165,21 +179,22 @@
   
   .linksGrid {
     grid-column: span 12;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 40px 24px;
+  }
+  
+  .bottomContainer {
+    padding: 0 32px;
   }
 }
 
 @media (max-width: 640px) {
-  .footer {
-    padding: 60px 0 80px;
-  }
-  
   .linksGrid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px 20px;
   }
   
-  .columnHeader {
-    margin-bottom: 16px;
+  .bottomContainer {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
   }
 }
