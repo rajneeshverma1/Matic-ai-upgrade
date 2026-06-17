@@ -3,6 +3,7 @@ import Hero from '@/components/Hero';
 import Carousel from '@/components/Carousel';
 import VideoPreview from '@/components/VideoPreview';
 import Testimonials from '@/components/Testimonials';
+import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
@@ -34,6 +35,9 @@ export default function Home() {
           <Testimonials />
         </div>
       </section>
+
+      {/* Footer Section */}
+      <Footer />
     </div>
   );
 }
