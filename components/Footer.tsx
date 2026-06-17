@@ -20,20 +20,8 @@ export default function Footer() {
             The AI video agency. Make videos yourself on our platform, or have our studio produce them for you.
           </p>
 
-          <div className={styles.badges}>
-            {/* Product Hunt Badge */}
-            <div className={styles.phBadge}>
-              <div className={styles.phIcon}>
-                <svg width="14" height="14" viewBox="0 0 40 40" fill="currentColor">
-                  <circle cx="20" cy="20" r="20" fill="#DA552F" />
-                  <text x="14" y="27" fontStyle="normal" fontWeight="bold" fontSize="22" fontFamily="Arial" fill="white">P</text>
-                </svg>
-              </div>
-              <div className={styles.phContent}>
-                <div className={styles.phLabel}>PRODUCT HUNT</div>
-                <div className={styles.phRank}>#5 Product of the Day</div>
-              </div>
-            </div>
+          <div className={styles.builtWithLove}>
+            Built with <span className={styles.heart}>❤️</span> by <span className={styles.studioText}>Matic Studio</span>
           </div>
         </div>
 

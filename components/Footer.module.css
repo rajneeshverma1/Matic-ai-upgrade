@@ -53,48 +53,37 @@
   margin-bottom: 32px;
 }
 
-/* Badges section */
-.badges {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
+/* Built with love section */
+.builtWithLove {
+  display: inline-flex;
   align-items: center;
-}
-
-/* Product Hunt Badge */
-.phBadge {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 6px 14px 6px 10px;
+  gap: 8px;
+  padding: 8px 18px;
   background-color: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 8px;
-  height: 38px;
+  border-radius: 99px;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 500;
 }
 
-.phIcon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.heart {
+  display: inline-block;
+  animation: heartbeat 1.6s infinite ease-in-out;
 }
 
-.phContent {
-  display: flex;
-  flex-direction: column;
-}
-
-.phLabel {
-  font-size: 0.55rem;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.35);
-  letter-spacing: 0.05em;
-}
-
-.phRank {
-  font-size: 0.72rem;
-  font-weight: 700;
+.studioText {
   color: #ffffff;
+  font-weight: 600;
+}
+
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
 }
 
 /* Links Columns */
