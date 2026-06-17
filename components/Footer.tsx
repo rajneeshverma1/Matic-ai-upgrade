@@ -21,12 +21,6 @@ export default function Footer() {
           </p>
 
           <div className={styles.badges}>
-            {/* Y Combinator Badge */}
-            <div className={styles.ycBadge}>
-              <div className={styles.ycLogo}>Y</div>
-              <span className={styles.ycText}>Combinator</span>
-            </div>
-
             {/* Product Hunt Badge */}
             <div className={styles.phBadge}>
               <div className={styles.phIcon}>

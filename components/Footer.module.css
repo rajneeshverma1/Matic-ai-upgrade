@@ -61,37 +61,6 @@
   align-items: center;
 }
 
-/* Y Combinator Badge */
-.ycBadge {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
-  background-color: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 8px;
-}
-
-.ycLogo {
-  background-color: #ff6600;
-  color: #ffffff;
-  font-weight: bold;
-  font-size: 0.85rem;
-  width: 20px;
-  height: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: Arial, sans-serif;
-}
-
-.ycText {
-  color: #ff6600;
-  font-weight: 700;
-  font-size: 0.85rem;
-  letter-spacing: -0.01em;
-}
-
 /* Product Hunt Badge */
 .phBadge {
   display: flex;
