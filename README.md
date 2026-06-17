@@ -50,3 +50,32 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser to view the application.
+
+## 📂 Folder & Components Architecture
+
+The project directory is structured as follows:
+
+```text
+natic-ai-loti/
+├── app/                  # Next.js App Router folders
+│   ├── layout.tsx        # Global page layout config
+│   ├── page.tsx          # Main entry page rendering the restored Carousel
+│   └── globals.css       # Global styles (Tailwind configurations & radial grids)
+├── components/           # UI Components
+│   ├── ui/               # Reusable primitives
+│   │   └── card-stack.tsx# Highly custom 3D card deck layout
+│   ├── Header.tsx        # Responsive navbar with customized logo size
+│   ├── Header.module.css # Styling for header elements
+│   ├── Hero.tsx          # Headline and subheadline introduction section
+│   ├── Hero.module.css   # Styling for hero section elements
+│   ├── Carousel.tsx      # Main 3D carousel element with hover video triggers
+│   └── Carousel.module.css# Transition and layout styles for Carousel cards
+```
+
+### Component Details
+- **Carousel component**: Coordinates active indices. Applies a fanned-out visual deck layout utilizing absolute CSS translations. Auto-plays video elements in real time when hovered using React `useRef` array bindings.
+- **CardStack component**: Renders dragging cards mapped dynamically through Framer Motion animations. Uses mathematical scale-downs and offset vertical translations to overlay inactive cards behind the active card.
+
+## 🧑‍💻 Author
+
+Developed and maintained by **rajneeshverma1** ([curiousrajneesh2024@gmail.com](mailto:curiousrajneesh2024@gmail.com)).
