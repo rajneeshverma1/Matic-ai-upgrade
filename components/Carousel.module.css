@@ -1,0 +1,218 @@
+.carouselContainer {
+  position: relative;
+  width: 100%;
+  max-width: 1280px;
+  margin: 10px auto 20px;
+  height: 380px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  perspective: 1200px;
+}
+
+/* Edge Masking Overlays */
+.edgeMaskLeft,
+.edgeMaskRight {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 15%;
+  z-index: 20; /* Above all cards */
+  pointer-events: none;
+}
+
+.edgeMaskLeft {
+  left: 0;
+  background: linear-gradient(to right, var(--background) 0%, transparent 100%);
+}
+
+.edgeMaskRight {
+  right: 0;
+  background: linear-gradient(to left, var(--background) 0%, transparent 100%);
+}
+
+.card {
+  position: absolute;
+  width: 540px;
+  height: 324px;
+  border-radius: 20px;
+  background-color: #fff;
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.leftCard {
+  transform: translateX(-45%) scale(0.9);
+  z-index: 5;
+  opacity: 0.6;
+  filter: blur(4px);
+}
+
+.centerCard {
+  transform: translateX(0) scale(1);
+  z-index: 10;
+  opacity: 1;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12), 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Interactive Hover Effect for Any Card */
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.18), 0 15px 30px rgba(0, 0, 0, 0.1);
+  z-index: 12; /* Bring hovered card to front slightly */
+}
+
+.rightCard {
+  transform: translateX(45%) scale(0.95);
+  z-index: 7;
+  opacity: 0.9;
+}
+
+.hiddenCard {
+  transform: translateX(0) scale(0.8);
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* The right card fade-to-white edge illusion */
+.rightCardOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to right, transparent 20%, rgba(253, 253, 253, 0.85) 100%);
+  pointer-events: none;
+  z-index: 2;
+  transition: opacity 0.5s ease;
+}
+
+.cardBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.videoElement {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  opacity: 0.8; /* Slight opacity so background gradient bleeds through nicely */
+  transition: opacity 0.5s ease;
+}
+
+.card:hover .videoElement {
+  opacity: 1; /* Brighten on hover when playing */
+}
+
+.mediaHud {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  background: rgba(20, 20, 20, 0.85);
+  backdrop-filter: blur(12px);
+  border-radius: 999px;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: white;
+  z-index: 15;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.hudIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.hudIcon:hover {
+  transform: scale(1.1);
+}
+
+.hudText {
+  font-family: var(--font-sans), sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* Navigation Arrows */
+.arrowLeft,
+.arrowRight {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 30;
+  background: white;
+  border: 1px solid #eaeaea;
+  border-radius: 50%;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+  transition: all 0.2s ease;
+  color: #333;
+}
+
+.arrowLeft:hover,
+.arrowRight:hover {
+  background: #fdfdfd;
+  transform: translateY(-50%) scale(1.05);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+}
+
+.arrowLeft:active,
+.arrowRight:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.arrowLeft {
+  left: 15%;
+}
+
+.arrowRight {
+  right: 15%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .card {
+    width: 600px;
+    height: 360px;
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    width: 90vw;
+    height: 300px;
+  }
+  .leftCard {
+    transform: translateX(-15vw) scale(0.9);
+  }
+  .rightCard {
+    transform: translateX(15vw) scale(0.95);
+  }
+  .arrowLeft, .arrowRight {
+    display: none;
+  }
+}
