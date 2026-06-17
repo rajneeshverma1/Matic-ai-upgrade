@@ -4,10 +4,12 @@ import Carousel from '@/components/Carousel';
 import VideoPreview from '@/components/VideoPreview';
 import Testimonials from '@/components/Testimonials';
 import Footer from '@/components/Footer';
+import MaintenanceBanner from '@/components/MaintenanceBanner';
 
 export default function Home() {
   return (
     <div className="flex flex-col w-full">
+      <MaintenanceBanner />
       {/* Section 1: Matic AI Landing Page */}
       <section className="min-h-screen flex flex-col justify-between py-4">
         <Header brand="matic" />
